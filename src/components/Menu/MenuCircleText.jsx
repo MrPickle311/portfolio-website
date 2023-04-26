@@ -13,8 +13,8 @@ const normalState = {
 };
 const highlightedState = {
   fontColor: 'white',
-  fontSize: '20px',
-  circleSize: '15px',
+  fontSize: '25px',
+  circleSize: '25px',
   distance: '20px',
   isClicked: true,
 };
@@ -29,7 +29,7 @@ const MenuCircleText = forwardRef(function (props, ref) {
     const circleElement = circleRef.current
     const { left, top } = circleElement.getBoundingClientRect();
     updateCirclePosition({ left, top }, currentState.circleSize)
-  }, [currentState.circleSize])
+  }, [isHighlighted])
 
   return (
     <Wrapper style={position} onClick={onClick}>

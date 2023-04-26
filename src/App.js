@@ -1,6 +1,5 @@
 import VerticalBar from "./components/Leftbar/VerticalBar";
 import Menu from "./components/Menu/Menu";
-import TestMenu from "./components/Menu/TestMenu";
 import PagesContainer from "./components/Pages/Pages";
 import styled from "styled-components";
 import { useState } from "react";
