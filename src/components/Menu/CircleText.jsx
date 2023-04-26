@@ -1,18 +1,22 @@
 import React from 'react';
+import { forwardRef, useRef } from 'react';
 import styled from 'styled-components';
 
-const CircleText = (props) => {
-  const { text, fontColor, fontSize, circleSize, distance, position, isClicked } = props;
+const CircleText = forwardRef(function (props, ref)  {
+  const { text, fontColor, fontSize, circleSize, distance, position, isClicked} = props;
 
   return (
     <Wrapper style={position}>
       <Text color={fontColor} size={fontSize} offset={distance} isClicked={isClicked}>
         {text} 
       </Text>
-      <Circle size={circleSize} isClicked={isClicked} />
+      <Circle 
+      size={circleSize} 
+      isClicked={isClicked} 
+      ref={ref}/>
     </Wrapper>
   );
-};
+});
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,6 +38,7 @@ const Text = styled.div`
   font-size: ${(props) => props.size};
   color: ${(props) => props.color};
   margin-right: ${(props) => props.offset};
+  white-space: nowrap;
   transition: font-size 0.3s ease, color 0.3s ease;
   ${(props) => props.isClicked}
 `;

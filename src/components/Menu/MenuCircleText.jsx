@@ -1,39 +1,51 @@
 import React from 'react';
 import styled from 'styled-components';
-import CircleText  from './CircleText';
+import CircleText from './CircleText';
+import { useState, useRef, useLayoutEffect } from 'react';
+import { useEffect, forwardRef } from 'react';
 
-const MenuCircleText = ({ text, position, isHighlighted, onClick }) => {
-    const normalState = {
-      fontColor: '#747474',
-      fontSize: '20px',
-      circleSize: '15px',
-      distance: '20px',
-      isClicked: false,
-    };
-    const highlightedState = {
-      fontColor: 'white',
-      fontSize: '30px',
-      circleSize: '30px',
-      distance: '40px',
-      isClicked: true,
-    };
-  
-    const currentState = isHighlighted ? highlightedState : normalState;
-  
-    return (
-      <Wrapper style={position} onClick={onClick}>
-        <CircleText
-          position={position}
-          text={text}
-          fontColor={currentState.fontColor}
-          fontSize={currentState.fontSize}
-          circleSize={currentState.circleSize}
-          distance="20px"
-          isClicked={currentState.isClicked}
-        />
-      </Wrapper>
-    );
-  };
+const normalState = {
+  fontColor: '#747474',
+  fontSize: '20px',
+  circleSize: '15px',
+  distance: '20px',
+  isClicked: false,
+};
+const highlightedState = {
+  fontColor: 'white',
+  fontSize: '20px',
+  circleSize: '15px',
+  distance: '20px',
+  isClicked: true,
+};
+
+const MenuCircleText = forwardRef(function (props, ref) {
+  const { text, position, isHighlighted, onClick, updateCirclePosition } = props;
+
+  const currentState = isHighlighted ? highlightedState : normalState;
+  const circleRef = useRef(null);
+
+  useEffect(() => {
+    const circleElement = circleRef.current
+    const { left, top } = circleElement.getBoundingClientRect();
+    updateCirclePosition({ left, top }, currentState.circleSize)
+  }, [currentState.circleSize])
+
+  return (
+    <Wrapper style={position} onClick={onClick}>
+      <CircleText
+        position={position}
+        text={text}
+        fontColor={currentState.fontColor}
+        fontSize={currentState.fontSize}
+        circleSize={currentState.circleSize}
+        distance={currentState.distance}
+        isClicked={currentState.isClicked}
+        ref={circleRef}
+      />
+    </Wrapper>
+  );
+});
 
 const Wrapper = styled.div`
   cursor: pointer;
