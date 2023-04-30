@@ -1,36 +1,26 @@
-import { Rectangle } from '@mui/icons-material';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Experience from './Experience';
+import Home from './Home';
+import Contact from './Contact';
+import PersonalProjects from './PersonalProjects';
+import Projects from './Projects';
+import Skills from './Skills';
 
-const Pages = ({ items, onItemClick }) => {
-    return (
-        <div>
-            {items.map((item, index) => (
-                <div onClick={() => onItemClick(index)}>
-                    {item}
-                </div>
-            ))}
-        </div>
-    );
+const Pages = {
+    0: <Home />,
+    1: <Experience />,
+    2: <Skills />,
+    3: <Projects />,
+    4: <PersonalProjects />,
+    5: <Contact/>
 };
 
-const Card = ({ content }) => {
-    return <div>{content}</div>;
-};
-
-const PagesContainer = ({ leftWidth }) => {
-    const [activeIndex, setActiveIndex] = useState(null);
-    const items = ['Menu item 1', 'Menu item 2', 'Menu item 3'];
-
-    const handleItemClick = (index) => {
-        setActiveIndex(index);
-    };
-
+const PagesContainer = ({ leftWidth,activeIndex }) => {
     return (
         <MenuContainer leftWidth={leftWidth}>
-            <Pages items={items} onItemClick={handleItemClick} />
             {activeIndex !== null && (
-                <Card content={`This is card ${activeIndex + 1}`} />
+                Pages[activeIndex]
             )}
         </MenuContainer>
     );
