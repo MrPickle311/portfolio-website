@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, createRef, useCallback } from 'react'
 import styled from 'styled-components';
 import MenuCircleText from './MenuCircleText';
-import Line from './Line';
+import Line from '../commons/Line';
 
 const textStates = [
   {
@@ -48,7 +48,7 @@ const textStates = [
   }
 ];
 
-const Menu = ({rightWidth}) => {
+const Menu = ({rightWidth,setPageIndex}) => {
 
   const [highlightedIndex, setHighlightedIndex] = useState(null);
   const ref = useRef(null);
@@ -60,6 +60,7 @@ const Menu = ({rightWidth}) => {
       setHighlightedIndex(null);
     }
     setHighlightedIndex(index);
+    setPageIndex(index);
   };
 
   useEffect(() => {
@@ -124,7 +125,7 @@ const MenuContainer = styled.div`
   right: 0;
   bottom: 0;
 
-  background: #272127;
+  background: #272727;
 
   font-family: 'Jura';
   font-style: normal;

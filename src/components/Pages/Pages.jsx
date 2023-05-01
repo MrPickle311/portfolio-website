@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Experience from './Experience';
 import Home from './Home';
@@ -29,7 +29,7 @@ const PagesContainer = ({ leftWidth,activeIndex }) => {
 const MenuContainer = styled.div`
   padding-left: ${(props) => props.leftWidth}%;
   flex: 1;
-  background: #222127;
+  background: #272727;
 
   font-family: 'Jura';
   font-style: normal;

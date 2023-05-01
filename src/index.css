@@ -5,7 +5,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Jura';
+  font-style: normal;
   scroll-behavior: smooth;
 }
 
@@ -74,15 +75,4 @@ body{
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-@keyframes header {
-  0%{
-    transform: translateY(-30px);
-    opacity: 0;
-  } 
-  100%{
-    transform: translateY(0);
-      opacity: 1;
-  }
 }

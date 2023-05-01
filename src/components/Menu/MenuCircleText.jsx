@@ -24,12 +24,27 @@ const MenuCircleText = forwardRef(function (props, ref) {
 
   const currentState = isHighlighted ? highlightedState : normalState;
   const circleRef = useRef(null);
+  var isInit = false
+
+  const changeLinesEndPosition = () => {
+    const circleElement = circleRef.current;
+    const { left, top } = circleElement.getBoundingClientRect();
+    updateCirclePosition({ left, top }, currentState.circleSize);
+  }
 
   useEffect(() => {
-    const circleElement = circleRef.current
-    const { left, top } = circleElement.getBoundingClientRect();
-    updateCirclePosition({ left, top }, currentState.circleSize)
+    if (!isInit) {
+      changeLinesEndPosition();
+    }
+    isInit = true;
   }, [isHighlighted])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      changeLinesEndPosition();
+    }, 1);
+    return () => clearInterval(interval);
+  });
 
   return (
     <Wrapper style={position} onClick={onClick}>

@@ -32,7 +32,7 @@ const SvgBank = ({ title, titleId, ...props }) => (
           strokeLinecap: "butt",
           strokeLinejoin: "miter",
           strokeMiterlimit: 10,
-          fill: "#000",
+          fill: "#DED9D9",
           fillRule: "nonzero",
           opacity: 1,
         }}

@@ -36,7 +36,7 @@ const SvgProject = ({ title, titleId, ...props }) => (
         overflow: "visible",
         visibility: "visible",
         opacity: 1,
-        fill: "#000",
+        fill: "#DED9D9",
         fillOpacity: 1,
         stroke: "none",
         strokeWidth: 2,

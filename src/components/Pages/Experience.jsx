@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Box from '../commons/Box';
+import MainText from '../commons/MainText';
 
 const data = [
     {
@@ -42,17 +44,18 @@ const Experience = () => {
 
     return (
         <div>
-            <Box left={45} top={20}>
-                <JobText left={3} top={2}>
+            <Box left={45} top={20} width={699} height={363}>
+                <MainText left={3} top={2}>
                     {data[currentIndex].title}
-                </JobText>
+                </MainText>
                 <FromToText top={16} left={4}>
                     {data[currentIndex].from} - {data[currentIndex].to}
                 </FromToText>
                 <DescriptionList
                     currentIndex={currentIndex}
                     top={35}
-                    left={3} />
+                    left={3}
+                />
             </Box>
             <Jobs
                 currentIndex={currentIndex}
@@ -63,30 +66,6 @@ const Experience = () => {
         </div>
     )
 }
-
-const Box = styled.div`
-    box-sizing: border-box;
-
-    left: ${props => props.left}%;
-    top: ${props => props.top}%;
-
-    position: absolute;
-    width: 699px;
-    height: 363px;
-
-    border: 2px solid #FF622F;
-    filter: drop-shadow(10px 15px 4px rgba(0, 0, 0, 0.25));
-`;
-
-const JobText = styled.div`
-    position: absolute;
-    left: ${props => props.left}%;
-    top: ${props => props.top}%;
-
-    font-weight: 400;
-    font-size: 55px;
-    line-height: 76px;
-`;
 
 const FromToText = styled.div`
     position: absolute;
@@ -195,20 +174,16 @@ const Jobs = ({ currentIndex, setCurrentIndex, left, top }) => {
             ))}
         </JobsWrapper>
     )
-}
+};
 
 const ListedJobsText = styled.div`
     position: absolute;
-    // display: inline-block;
     left: ${props => props.left}px;
     top: ${props => props.top}px;
-    // width: 200px;
     white-space: nowrap;
 
-    // font-weight: 400;
     color: ${props => props.isHighlighted ? 'white' : '#A0A0A0'};
     font-size: 35px;
-    // line-height: 76px;
     cursor: pointer;
     transition: font-size 0.1s ease, color 0.1s ease;
 `;

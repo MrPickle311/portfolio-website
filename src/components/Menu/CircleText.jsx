@@ -39,7 +39,7 @@ const Text = styled.div`
   color: ${(props) => props.color};
   margin-right: ${(props) => props.offset};
   white-space: nowrap;
-  transition: font-size 0.3s ease, color 0.3s ease;
+  transition: font-size 0.1s ease, color 0.1s ease;
   ${(props) => props.isClicked}
 `;
 
